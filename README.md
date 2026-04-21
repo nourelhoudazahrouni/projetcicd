@@ -89,6 +89,7 @@ git push origin main
 
 1. Allez dans l'onglet **Actions** de votre dépôt
 2. Vous verrez 3 workflows :
+
    - 🔍 **CI — Validation du code** → vérifie HTML, CSS, structure
    - 🚀 **CD — Déploiement sur GitHub Pages** → publie le site
    - 🔎 **PR — Vérification avant fusion** → s'active sur les PRs
@@ -145,54 +146,54 @@ https://<votre-username>.github.io/devpulse-cicd/
 
 ### `ci.yml` — Intégration Continue
 
-| Job                | Rôle                                      | Déclencheur          |
-|--------------------|-------------------------------------------|----------------------|
-| `validate-html`    | Valide la syntaxe HTML5                   | push / pull_request  |
-| `validate-css`     | Vérifie les règles CSS avec stylelint     | push / pull_request  |
-| `check-structure`  | Vérifie que tous les fichiers sont là     | push / pull_request  |
+| Job               | Rôle                                  | Déclencheur         |
+| ----------------- | ------------------------------------- | ------------------- |
+| `validate-html`   | Valide la syntaxe HTML5               | push / pull_request |
+| `validate-css`    | Vérifie les règles CSS avec stylelint | push / pull_request |
+| `check-structure` | Vérifie que tous les fichiers sont là | push / pull_request |
 
 ### `cd.yml` — Déploiement Continu
 
-| Job      | Rôle                                                  | Déclencheur   |
-|----------|-------------------------------------------------------|---------------|
-| `build`  | Injecte les métadonnées, prépare l'artifact           | push → main   |
-| `deploy` | Publie le site sur GitHub Pages                       | après `build` |
+| Job      | Rôle                                        | Déclencheur   |
+| -------- | ------------------------------------------- | ------------- |
+| `build`  | Injecte les métadonnées, prépare l'artifact | push → main   |
+| `deploy` | Publie le site sur GitHub Pages             | après `build` |
 
 ### `pr-check.yml` — Vérification des Pull Requests
 
-| Job               | Rôle                                         | Déclencheur      |
-|-------------------|----------------------------------------------|------------------|
-| `check-changes`   | Liste les fichiers modifiés, vérifie secrets | PR vers main     |
-| `preview-build`   | Simule le build, affiche un résumé           | PR vers main     |
+| Job             | Rôle                                         | Déclencheur  |
+| --------------- | -------------------------------------------- | ------------ |
+| `check-changes` | Liste les fichiers modifiés, vérifie secrets | PR vers main |
+| `preview-build` | Simule le build, affiche un résumé           | PR vers main |
 
 ---
 
 ## 🔑 Concepts GitHub Actions utilisés
 
-| Concept          | Explication                                                             |
-|------------------|-------------------------------------------------------------------------|
-| `on: push`       | Déclenche le workflow quand du code est poussé                          |
-| `on: pull_request` | Déclenche le workflow quand une PR est ouverte ou mise à jour         |
-| `jobs`           | Unité de travail (peut s'exécuter en parallèle ou en séquence)         |
-| `steps`          | Instructions à l'intérieur d'un job                                    |
-| `uses`           | Réutilise une action existante (ex: `actions/checkout@v4`)             |
-| `run`            | Exécute une commande shell                                             |
-| `needs`          | Attend qu'un autre job soit terminé avant de démarrer                  |
-| `environment`    | Environnement de déploiement (visible dans l'onglet Deployments)       |
-| `concurrency`    | Empêche deux déploiements de s'exécuter en même temps                  |
-| `permissions`    | Droits accordés au workflow (lecture, écriture, Pages...)              |
+| Concept            | Explication                                                      |
+| ------------------ | ---------------------------------------------------------------- |
+| `on: push`         | Déclenche le workflow quand du code est poussé                   |
+| `on: pull_request` | Déclenche le workflow quand une PR est ouverte ou mise à jour    |
+| `jobs`             | Unité de travail (peut s'exécuter en parallèle ou en séquence)   |
+| `steps`            | Instructions à l'intérieur d'un job                              |
+| `uses`             | Réutilise une action existante (ex: `actions/checkout@v4`)       |
+| `run`              | Exécute une commande shell                                       |
+| `needs`            | Attend qu'un autre job soit terminé avant de démarrer            |
+| `environment`      | Environnement de déploiement (visible dans l'onglet Deployments) |
+| `concurrency`      | Empêche deux déploiements de s'exécuter en même temps            |
+| `permissions`      | Droits accordés au workflow (lecture, écriture, Pages...)        |
 
 ---
 
 ## ⚠️ Erreurs fréquentes
 
-| Erreur                              | Solution                                                      |
-|-------------------------------------|---------------------------------------------------------------|
-| Pages non activées                  | Settings → Pages → Source → GitHub Actions                    |
-| Dépôt privé sans GitHub Pro         | Passer le dépôt en **Public**                                 |
-| Le workflow ne se déclenche pas     | Vérifier l'indentation YAML (utiliser des espaces, pas tabs)  |
-| `env.js` présent dans le dépôt      | Le fichier est dans `.gitignore`, ne pas le committer         |
-| Workflow échoue sur `validate-html` | Vérifier la syntaxe HTML (balises non fermées, etc.)          |
+| Erreur                              | Solution                                                     |
+| ----------------------------------- | ------------------------------------------------------------ |
+| Pages non activées                  | Settings → Pages → Source → GitHub Actions                   |
+| Dépôt privé sans GitHub Pro         | Passer le dépôt en **Public**                                |
+| Le workflow ne se déclenche pas     | Vérifier l'indentation YAML (utiliser des espaces, pas tabs) |
+| `env.js` présent dans le dépôt      | Le fichier est dans `.gitignore`, ne pas le committer        |
+| Workflow échoue sur `validate-html` | Vérifier la syntaxe HTML (balises non fermées, etc.)         |
 
 ---
 
@@ -202,3 +203,5 @@ https://<votre-username>.github.io/devpulse-cicd/
 - [Marketplace des Actions](https://github.com/marketplace?type=actions)
 - [GitHub Pages](https://pages.github.com/)
 - [Syntaxe YAML](https://yaml.org/spec/1.2.2/)
+
+echo "" >> README.md
