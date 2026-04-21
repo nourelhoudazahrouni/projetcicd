@@ -61,7 +61,7 @@ jobs:
         with:
           node-version: "20"
 
-      # Installer stylelint (outil de validation CSS)
+      # Installer stylelint (outil de validation CSS))
       - name: 📦 Installer stylelint
         run: npm install -g stylelint stylelint-config-standard
 
