@@ -204,4 +204,4 @@ https://<votre-username>.github.io/devpulse-cicd/
 - [GitHub Pages](https://pages.github.com/)
 - [Syntaxe YAML](https://yaml.org/spec/1.2.2/)
 
-echo "" >> README.md
+echo ""
